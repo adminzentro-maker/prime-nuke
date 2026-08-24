@@ -213,14 +213,62 @@
             color: #94a3b8;
         }
 
+        /* FAQ Section */
+        .faq {
+            padding: 60px 10%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 20px;
+        }
+
+        .faq-item h3 {
+            font-size: 18px;
+            color: #3b82f6;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
         /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             background-color: #0f172a;
             border-top: 1px solid #334155;
             color: #64748b;
             font-size: 14px;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #3b82f6;
         }
     </style>
 </head>
@@ -233,6 +281,7 @@
             <ul>
                 <li><a href="#features">Vorteile</a></li>
                 <li><a href="#pakete">Pakete</a></li>
+                <li><a href="#faq">FAQ</a></li>
             </ul>
         </nav>
         <a href="https://tobi.any-hosting.de/" target="_blank" class="btn-dashboard">Dashboard</a>
@@ -312,9 +361,38 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <h2>Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="faq-item">
+            <h3>Wie bestelle ich einen Server?</h3>
+            <p>Klicke einfach bei deinem gewünschten Paket auf "Bestellen". Du wirst direkt auf unseren Discord-Server weitergeleitet, wo du über ein Support-Ticket dein Paket bestellen kannst.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Wie erhalte ich Zugriff auf mein Web-Dashboard?</h3>
+            <p>Nach der Freischaltung deines Servers erhältst du deine Zugangsdaten für unser Dashboard unter <strong>tobi.any-hosting.de</strong>, um deinen Server bequem zu verwalten.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Wie lange dauert die Einrichtung?</h3>
+            <p>In der Regel wird dein Server innerhalb weniger Minuten nach der Bestätigung auf unserem Discord-Server eingerichtet.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Sind meine Server vor DDoS-Angriffen geschützt?</h3>
+            <p>Ja, alle unsere Pakete enthalten eine integrierte DDoS-Protection, damit dein Server online und laggfrei bleibt.</p>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Prime-Hosting. Alle Rechte vorbehalten.</p>
+        <div class="footer-links">
+            
+            <a href="https://discord.gg/QvjF4Xmesh" target="_blank">Discord Support</a>
+        </div>
     </footer>
 
 </body>
