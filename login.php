@@ -2,10 +2,10 @@
 session_start();
 
 // 1. Zugangsdaten für deine MySQL-Datenbank
-$db_host = 'localhost';
-$db_name = 'prime_hosting';
-$db_user = 'dein_db_user';
-$db_pass = 'dein_db_passwort';
+$db_host = 'sql105.infinityfree.com';
+$db_name = 'if0_42741699_server';
+$db_user = 'if0_42741699';
+$db_pass = 'oRCMUrN99n3rVD';
 
 try {
     // MySQL-Verbindung aufbauen
