@@ -1,42 +1,51 @@
 <?php
 session_start();
 
-// 1. SQLite Datenbank-Verbindung herstellen (Datei: prime_hosting.db)
+// 1. Zugangsdaten für deine MySQL-Datenbank
+$db_host = 'localhost';
+$db_name = 'prime_hosting';
+$db_user = 'dein_db_user';
+$db_pass = 'dein_db_passwort';
+
 try {
-    $db = new PDO('sqlite:' . __DIR__ . '/prime_hosting.db');
+    // MySQL-Verbindung aufbauen
+    $db = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_pass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-    // Tabellen automatisch erstellen, falls sie nicht existieren
+    // Tabellen automatisch erstellen (falls sie noch nicht existieren)
     $db->exec("
         CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL
-        );
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL UNIQUE,
+            password VARCHAR(255) NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
         CREATE TABLE IF NOT EXISTS servers (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER NOT NULL,
-            name TEXT NOT NULL,
-            ip TEXT NOT NULL,
-            slots TEXT NOT NULL,
-            ram TEXT NOT NULL,
-            cpu TEXT NOT NULL,
-            status TEXT NOT NULL,
-            FOREIGN KEY (user_id) REFERENCES users(id)
-        );
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            name VARCHAR(100) NOT NULL,
+            ip VARCHAR(50) NOT NULL,
+            slots VARCHAR(20) NOT NULL,
+            ram VARCHAR(20) NOT NULL,
+            cpu VARCHAR(20) NOT NULL,
+            status VARCHAR(20) NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ");
 
-    // Beispiel-User anlegen (nur wenn noch keine User existieren)
+    // Beispiel-User anlegen (falls Datenbank noch komplett leer ist)
     $stmt = $db->query("SELECT COUNT(*) FROM users");
     if ($stmt->fetchColumn() == 0) {
         // Test-Benutzer: Username 'kunderp', Passwort 'pass123'
         $stmt = $db->prepare("INSERT INTO users (username, password) VALUES (:user, :pass)");
-        $stmt->execute(['user' => 'kunderp', 'pass' => password_hash('pass123', PASSWORD_DEFAULT)]);
+        $stmt->execute([
+            'user' => 'kunderp',
+            'pass' => password_hash('pass123', PASSWORD_DEFAULT)
+        ]);
         $userId = $db->lastInsertId();
 
-        // Server für Test-Benutzer eintragen
+        // Dem Test-Benutzer einen Server zuweisen
         $stmt = $db->prepare("INSERT INTO servers (user_id, name, ip, slots, ram, cpu, status) 
                               VALUES (:user_id, :name, :ip, :slots, :ram, :cpu, :status)");
         $stmt->execute([
@@ -51,10 +60,10 @@ try {
     }
 
 } catch (PDOException $e) {
-    die("Datenbank-Fehler: " . $e->getMessage());
+    die("MySQL-Datenbankfehler: " . $e->getMessage());
 }
 
-// 2. Login Verarbeiten
+// 2. Login-Logik
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
@@ -72,14 +81,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// 3. Logout Verarbeiten
+// 3. Logout-Logik
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
     header('Location: login.php');
     exit;
 }
 
-// 4. Server des Nutzers abrufen
+// 4. Server des Nutzers laden
 $userServers = [];
 if (isset($_SESSION['user_id'])) {
     $stmt = $db->prepare("SELECT * FROM servers WHERE user_id = :user_id");
