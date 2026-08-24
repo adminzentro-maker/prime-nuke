@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime-Hosting | Extreme FiveM Deals</title>
-    </head>
-<style>
+    <title>Prime-Hosting | High-Performance FiveM Server Hosting</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -19,6 +18,7 @@
             line-height: 1.6;
         }
 
+        /* Header / Navigation */
         header {
             display: flex;
             justify-content: space-between;
@@ -33,9 +33,12 @@
             font-weight: bold;
             color: #3b82f6;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .logo span { color: #f8fafc; }
+        .logo span {
+            color: #f8fafc;
+        }
 
         nav ul {
             display: flex;
@@ -47,19 +50,59 @@
             color: #cbd5e1;
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.3s;
         }
 
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        .btn-dashboard {
+            background-color: #3b82f6;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-dashboard:hover {
+            background-color: #2563eb;
+        }
+
+        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
         }
 
-        .hero h1 span { color: #3b82f6; }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
 
+        .hero h1 span {
+            color: #3b82f6;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Pricing Section */
         .pricing {
-            padding: 40px 10%;
+            padding: 60px 10%;
             text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
         }
 
         .plans {
@@ -67,7 +110,6 @@
             justify-content: center;
             gap: 25px;
             flex-wrap: wrap;
-            margin-top: 30px;
         }
 
         .card {
@@ -78,12 +120,15 @@
             width: 300px;
             text-align: left;
             position: relative;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
-        /* Highlight für das 5€ Paket */
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
         .card.featured {
             border: 2px solid #3b82f6;
-            transform: scale(1.05);
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
         }
 
@@ -142,33 +187,66 @@
             background-color: #2563eb;
         }
 
+        /* Features Section */
+        .features-grid {
+            padding: 60px 10%;
+            background-color: #1e293b;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-box {
+            background-color: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .feature-box h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .feature-box p {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
+            background-color: #0f172a;
             border-top: 1px solid #334155;
             color: #64748b;
+            font-size: 14px;
         }
     </style>
-    <body>
+</head>
+<body>
 
+    <!-- Navigation -->
     <header>
         <div class="logo">Prime-<span>Hosting</span></div>
         <nav>
             <ul>
-                <li><a href="#pakete">Angebote</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="https://tobi.any-hosting.de/">Dashboard</a></li>
+                <li><a href="#features">Vorteile</a></li>
+                <li><a href="#pakete">Pakete</a></li>
             </ul>
         </nav>
+        <a href="https://tobi.any-hosting.de/" target="_blank" class="btn-dashboard">Dashboard</a>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <h1>Maximale Power zum <span>Tiefpreis</span></h1>
-        <p>2 CPU-Kerne, 16 GB RAM und 64 Slots für deinen FiveM Server.</p>
+        <p>2 CPU-Kerne, 16 GB RAM und 64 Slots für deinen FiveM RP-Server.</p>
     </section>
 
+    <!-- Pakete Section -->
     <section class="pricing" id="pakete">
-        <h2>Wähle dein Paket</h2>
+        <h2>Unsere FiveM Pakete</h2>
         <div class="plans">
             
             <!-- Entry Paket -->
@@ -180,12 +258,12 @@
                     <li>✔ 1 CPU Kern</li>
                     <li>✔ 8 GB DDR4 RAM</li>
                     <li>✔ NVMe SSD Speicher</li>
-                    <li>✔ DDoS Protection</li>
+                    <li>✔ Basic DDoS Protection</li>
                 </ul>
-                <a href="#" class="btn-order">Bestellen</a>
+                <a href="https://discord.gg/QvjF4Xmesh" target="_blank" class="btn-order">Bestellen</a>
             </div>
 
-            <!-- Starter Paket (Das 5€ Paket) -->
+            <!-- Starter Paket (Hauptangebot) -->
             <div class="card featured">
                 <div class="badge">BELIEBT</div>
                 <h3>Starter</h3>
@@ -194,11 +272,11 @@
                     <li>✔ <strong>64 Spieler (Slots)</strong></li>
                     <li>✔ <strong>2 CPU Kerne</strong></li>
                     <li>✔ <strong>16 GB DDR4 RAM</strong></li>
-                    <li>✔ NVMe High-Speed SSD</li>
+                    <li>✔ High-Speed NVMe SSD</li>
                     <li>✔ Kostenlose Datenbank</li>
                     <li>✔ Premium DDoS Protection</li>
                 </ul>
-                <a href="#" class="btn-order">Jetzt Sichern</a>
+                <a href="https://discord.gg/QvjF4Xmesh" target="_blank" class="btn-order">Jetzt Sichern</a>
             </div>
 
             <!-- Pro Paket -->
@@ -212,12 +290,29 @@
                     <li>✔ NVMe SSD Speicher</li>
                     <li>✔ Priorisierter Support</li>
                 </ul>
-                <a href="#" class="btn-order">Bestellen</a>
+                <a href="https://discord.gg/QvjF4Xmesh" target="_blank" class="btn-order">Bestellen</a>
             </div>
 
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section class="features-grid" id="features">
+        <div class="feature-box">
+            <h4>⚡ High Performance</h4>
+            <p>Leistungsstarke Hardware garantiert flüssiges Roleplay ohne Lag-Spikes.</p>
+        </div>
+        <div class="feature-box">
+            <h4>🛡️ DDoS Schutz</h4>
+            <p>Umfassender Schutz vor Netzwerkangriffen für höchste Erreichbarkeit.</p>
+        </div>
+        <div class="feature-box">
+            <h4>🚀 Sofort Startklar</h4>
+            <p>Nach der Bestellung ist dein FiveM Server direkt einsatzbereit.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Prime-Hosting. Alle Rechte vorbehalten.</p>
     </footer>
