@@ -4,9 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prime-Hosting | Extreme FiveM Deals</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
+    </head>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: #1e293b;
+            border-bottom: 2px solid #3b82f6;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3b82f6;
+            text-transform: uppercase;
+        }
+
+        .logo span { color: #f8fafc; }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .hero h1 span { color: #3b82f6; }
+
+        .pricing {
+            padding: 40px 10%;
+            text-align: center;
+        }
+
+        .plans {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 30px;
+            width: 300px;
+            text-align: left;
+            position: relative;
+        }
+
+        /* Highlight für das 5€ Paket */
+        .card.featured {
+            border: 2px solid #3b82f6;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background-color: #3b82f6;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            color: #3b82f6;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .price span {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features li {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .btn-order {
+            display: block;
+            text-align: center;
+            background-color: #3b82f6;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-order:hover {
+            background-color: #2563eb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #334155;
+            color: #64748b;
+        }
+    </style>
+    <body>
 
     <header>
         <div class="logo">Prime-<span>Hosting</span></div>
